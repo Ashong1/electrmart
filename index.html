@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asero ElectroMart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Asero ElectroMart</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart <span id="cart-count" class="badge bg-light text-dark">0</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="help.html">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="return-policy.html">Return Policy</a> <!-- Link to return policy page -->
+                      </li>                                            
+                </ul>
+                <form class="d-flex ms-3" role="search" onsubmit="event.preventDefault(); searchProducts();">
+                    <input class="form-control me-2" type="search" id="search-bar" placeholder="Search products" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-dark text-white text-center py-4">
+        <h1>Asero ElectroMart</h1>
+        <p>Your one-stop shop for electronics</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mt-4">
+        <h2 class="mb-4">Available Products</h2>
+        <div class="row g-4" id="product-list">
+            <!-- Product 1 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/earbuds.webp" alt="Wireless Earbuds" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Wireless Earbuds</h5>
+                        <p class="card-text">High-quality sound with noise cancellation.</p>
+                        <p><strong>$49.99</strong></p>
+                        <a href="product.html?product=1" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Wireless Earbuds', '$49.99', 'product/earbuds.webp')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/laptop.webp" alt="Laptop" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Laptop</h5>
+                        <p class="card-text">Powerful performance in a sleek design.</p>
+                        <p><strong>$899.99</strong></p>
+                        <a href="product.html?product=2" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Laptop', '$899.99', 'product/laptop.webp')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/smartwatch.webp" alt="Smartwatch" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Smartwatch</h5>
+                        <p class="card-text">Fitness tracking and notifications on your wrist.</p>
+                        <p><strong>$199.99</strong></p>
+                        <a href="product.html?product=3" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Smartwatch', '$199.99', 'product/smartwatch.webp')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/smartphone.jfif" alt="Smartphone" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Smartphone</h5>
+                        <p class="card-text">Latest model with stunning camera and display.</p>
+                        <p><strong>$699.99</strong></p>
+                        <a href="product.html?product=4" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Smartphone', '$699.99', 'product/smartphone.jfif')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/tablet.webp" alt="Tablet" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Tablet</h5>
+                        <p class="card-text">Perfect for entertainment and work on the go.</p>
+                        <p><strong>$399.99</strong></p>
+                        <a href="product.html?product=5" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Tablet', '$399.99', 'product/tablet.webp')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/headphone.webp" alt="Headphones" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Headphones</h5>
+                        <p class="card-text">Over-ear headphones with immersive sound.</p>
+                        <p><strong>$149.99</strong></p>
+                        <a href="product.html?product=6" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Headphones', '$149.99', 'product/headphone.webp')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 7 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/btspeaker.webp" alt="Bluetooth Speaker" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Bluetooth Speaker</h5>
+                        <p class="card-text">Portable speaker with rich sound quality.</p>
+                        <p><strong>$79.99</strong></p>
+                        <a href="product.html?product=7" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Bluetooth Speaker', '$79.99', 'product/btspeaker.webp')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 8 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/camera.jfif" alt="Camera" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Camera</h5>
+                        <p class="card-text">Capture every moment with crystal-clear detail.</p>
+                        <p><strong>$549.99</strong></p>
+                        <a href="product.html?product=8" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Camera', '$549.99', 'product/camera.jfif')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 9 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/monitor.jpg" alt="Monitor" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Monitor</h5>
+                        <p class="card-text">27-inch full HD display for productivity and gaming.</p>
+                        <p><strong>$229.99</strong></p>
+                        <a href="product.html?product=9" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Monitor', '$229.99', 'product/monitor.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 10 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/keyboard.webp" alt="Mechanical Keyboard" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Mechanical Keyboard</h5>
+                        <p class="card-text">Tactile keys and RGB lighting for gamers and coders.</p>
+                        <p><strong>$89.99</strong></p>
+                        <a href="product.html?product=10" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Mechanical Keyboard', '$89.99', 'product/keyboard.webp')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 11 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="product/mouse.webp" alt="Gaming Mouse" class="product-img card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Gaming Mouse</h5>
+                        <p class="card-text">Precision tracking with customizable buttons.</p>
+                        <p><strong>$59.99</strong></p>
+                        <a href="product.html?product=11" class="btn btn-primary">View</a>
+                        <button class="btn btn-success" onclick="addToCart('Gaming Mouse', '$59.99', 'product/mouse.webp')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: name, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById('cart-count').innerText = cart.length;
+            alert(`${name} added to cart!`);
+        }
+
+        function searchProducts() {
+            let input = document.getElementById('search-bar').value.toLowerCase();
+            let cards = document.getElementById('product-list').getElementsByClassName('card');
+
+            for (let card of cards) {
+                let name = card.getElementsByClassName('card-title')[0].innerText.toLowerCase();
+                let description = card.getElementsByClassName('card-text')[0].innerText.toLowerCase();
+                if (name.includes(input) || description.includes(input)) {
+                    card.style.display = '';  // Show matching card
+                } else {
+                    card.style.display = 'none';  // Hide non-matching card
+                }
+            }
+        }
+
+        window.onload = () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

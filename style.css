@@ -1,0 +1,76 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* Product Detail Section */
+.product-details-container {
+    display: flex;
+    flex-wrap: wrap;  /* Ensure it wraps on smaller screens */
+    justify-content: center;  /* Center the content */
+    gap: 20px;  /* Space between the image and description */
+}
+
+.product-details-img {
+    width: 450px;  /* Adjust width to a moderate size */
+    height: auto;  /* Maintain aspect ratio */
+    object-fit: contain;  /* Ensure the image doesn't stretch */
+}
+
+.product-description {
+    max-width: 600px;  /* Limit the width of the description */
+    flex: 1;  /* Allow it to take up remaining space */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .product-details-container {
+        flex-direction: column;  /* Stack items vertically on smaller screens */
+        align-items: center;  /* Center content on smaller screens */
+    }
+
+    .product-details-img {
+        width: 100%;  /* Allow the image to take full width on smaller screens */
+    }
+}
+
+/* Card Styling */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Instructions List */
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}

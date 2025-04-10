@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Asero ElectroMart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Function to add an item to the cart
+        function addToCart(item) {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(item); // Add the item to the cart
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save to localStorage
+
+            console.log("Item added to cart:", item); // Optional for debugging
+            console.log("Updated cart:", cart); // Check the cart contents
+        }
+
+        // Function to handle adding to cart from the product details page
+        function addToCartFromDetail() {
+            const productName = document.getElementById("product-name").innerText;
+            const productPrice = document.getElementById("product-price").innerText;
+            const productImage = document.getElementById("product-img").src;
+
+            const newItem = {
+                name: productName,
+                price: productPrice,
+                image: productImage
+            };
+
+            addToCart(newItem); // Add the item to the cart
+
+            // Update the cart count in the navbar
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            document.getElementById('cart-count').innerText = cart.length;
+
+            alert(productName + " added to cart!"); // Show confirmation message
+        }
+
+        // Load the product details dynamically when the page loads
+        window.onload = () => {
+            loadProductDetails();
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        // Load product details from URL parameter
+        function loadProductDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product');
+
+            const products = {
+            "1": {
+                "name": "Wireless Earbuds",
+                "image": "product/earbuds.webp",
+                "description": "High-quality sound with noise cancellation.",
+                "price": "$49.99",
+                "instructions": [
+                    "Charge the earbuds before first use.",
+                    "Turn on Bluetooth on your device.",
+                    "Press and hold the power button to pair.",
+                    "Select 'Earbuds Pro' from the Bluetooth menu.",
+                    "Enjoy your music!"
+                ]
+            },
+            "2": {
+                "name": "Laptop",
+                "image": "product/laptop.webp",
+                "description": "Powerful performance in a sleek design.",
+                "price": "$899.99",
+                "instructions": [
+                    "Plug in the charger to power the laptop.",
+                    "Press the power button to turn it on.",
+                    "Set up Windows or your OS of choice.",
+                    "Install necessary software and drivers.",
+                    "Start gaming or working!"
+                ]
+            },
+            "3": {
+                "name": "Smartwatch",
+                "image": "product/smartwatch.webp",
+                "description": "Fitness tracking and notifications on your wrist.",
+                "price": "$199.99",
+                "instructions": [
+                    "Charge the smartwatch before first use.",
+                    "Download the companion app.",
+                    "Turn on Bluetooth and connect.",
+                    "Customize your settings in the app.",
+                    "Track your activities!"
+                ]
+            },
+            "4": {
+                "name": "Smartphone",
+                "image": "product/smartphone.jfif",
+                "description": "Latest model with stunning camera and display.",
+                "price": "$699.99",
+                "instructions": [
+                    "Insert SIM card and charge the phone.",
+                    "Set up your phone with your Google account.",
+                    "Download essential apps from Google Play Store.",
+                    "Use the camera for high-quality photos.",
+                    "Enjoy your smartphone experience!"
+                ]
+            },
+            "5": {
+                "name": "Tablet",
+                "image": "product/tablet.webp",
+                "description": "Perfect for entertainment and work on the go.",
+                "price": "$399.99",
+                "instructions": [
+                    "Charge the tablet before first use.",
+                    "Set up Wi-Fi connection and accounts.",
+                    "Download apps for entertainment and work.",
+                    "Use the tablet for browsing, gaming, and media.",
+                    "Enjoy seamless portability and performance!"
+                ]
+            },
+            "6": {
+                "name": "Headphones",
+                "image": "product/headphone.webp",
+                "description": "Over-ear headphones with immersive sound.",
+                "price": "$149.99",
+                "instructions": [
+                    "Charge the headphones before first use.",
+                    "Adjust headband for comfort.",
+                    "Pair the headphones with your device via Bluetooth.",
+                    "Use controls to adjust volume and track selection.",
+                    "Enjoy crisp and clear audio!"
+                ]
+            },
+            "7": {
+                "name": "Bluetooth Speaker",
+                "image": "product/btspeaker.webp",
+                "description": "Portable speaker with rich sound quality.",
+                "price": "$79.99",
+                "instructions": [
+                    "Turn on Bluetooth and connect to your device.",
+                    "Adjust volume using the controls on the speaker.",
+                    "Place the speaker in an open area for optimal sound.",
+                    "Enjoy music on the go!"
+                ]
+            },
+            "8": {
+                "name": "Camera",
+                "image": "product/camera.jfif",
+                "description": "Capture every moment with crystal-clear detail.",
+                "price": "$549.99",
+                "instructions": [
+                    "Insert memory card and charge the camera.",
+                    "Set your preferred settings for photo/video.",
+                    "Use the shutter button to capture moments.",
+                    "Transfer your photos to a computer for editing.",
+                    "Enjoy professional-level photography!"
+                ]
+            },
+            "9": {
+                "name": "Monitor",
+                "image": "product/monitor.jpg",
+                "description": "27-inch full HD display for productivity and gaming.",
+                "price": "$229.99",
+                "instructions": [
+                    "Connect the monitor to your PC or gaming console.",
+                    "Adjust brightness and contrast for optimal display.",
+                    "Use monitor settings to customize color profiles.",
+                    "Enjoy high-definition visuals for work and gaming!"
+                ]
+            },
+            "10": {
+                "name": "Mechanical Keyboard",
+                "image": "product/keyboard.webp",
+                "description": "Tactile keys and RGB lighting for gamers and coders.",
+                "price": "$89.99",
+                "instructions": [
+                    "Plug in the keyboard to your computer.",
+                    "Install necessary software for key customization.",
+                    "Adjust RGB lighting to match your style.",
+                    "Use tactile keys for a responsive typing experience.",
+                    "Enjoy seamless typing or gaming!"
+                ]
+            },
+            "11": {
+                "name": "Gaming Mouse",
+                "image": "product/mouse.webp",
+                "description": "Precision tracking with customizable buttons.",
+                "price": "$59.99",
+                "instructions": [
+                    "Connect the mouse via USB or Bluetooth.",
+                    "Adjust sensitivity for better tracking.",
+                    "Customize buttons and macros through the software.",
+                    "Enjoy smooth gameplay with precise control!"
+                ]
+            }
+        };
+
+            if (products[productId]) {
+                document.getElementById("product-name").innerText = products[productId].name;
+                document.getElementById("product-img").src = products[productId].image;
+                document.getElementById("product-desc").innerText = products[productId].description;
+                document.getElementById("product-price").innerText = "Price: " + products[productId].price;
+
+                let instructionsList = "";
+                products[productId].instructions.forEach(instruction => {
+                    instructionsList += `<li>${instruction}</li>`;
+                });
+                document.getElementById("product-instructions").innerHTML = instructionsList;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"></a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart <span id="cart-count" class="badge bg-light text-dark">0</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="help.html">Help</a> <!-- Help button -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="return-policy.html">Return Policy</a> <!-- Link to return policy page -->
+                      </li>
+                                            
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div class="container mt-5">
+        <a href="index.html" class="btn btn-secondary mb-3">Back to Home</a>
+        <div class="card p-4">
+            <h1 id="product-name"></h1>
+            <img id="product-img" src="" class="product-details-img">
+            <p id="product-desc" class="mt-3"></p>
+            <h3 id="product-price"></h3>
+            <h3>How to Use</h3>
+            <ul id="product-instructions"></ul>
+            <button class="btn btn-success mt-3" onclick="addToCartFromDetail()">Add to Cart</button>
+        </div>
+    </div>
+</body>
+
+</html>
